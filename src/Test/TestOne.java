@@ -2,19 +2,21 @@ package Test;
 
 import org.junit.experimental.theories.suppliers.TestedOn;
 
-import Helper.Solo;
+import com.robotium.solo.Solo;
+
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 
+@SuppressWarnings("rawtypes")
 public class TestOne extends ActivityInstrumentationTestCase2{
-/*	public TestOne(Class activityClass){
-		super(activityClass);
-	}*/
-	public  static Class<?> launchActivityClass;
-	public static String packageName="com.shishike.calm";
-	public static String mainActivity="com.shishike.calm.splash.autoset.StartActivity_";
+
+	
+	private static String packageName="com.shishike.calm";
+	private static String mainActivity="com.shishike.calm.splash.autoset.StartActivity_";
+	private Solo solo;
 	public Activity activity;
-	public Solo solo;
+	
+	private  static Class<?> launchActivityClass;
 	
 
 	static{ 
@@ -28,14 +30,16 @@ public class TestOne extends ActivityInstrumentationTestCase2{
 
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	public TestOne(){
-		super(packageName, launchActivityClass);
+		super(packageName, launchActivityClass);//和测试类连接起来
 	}
+	
+	
 	@Override
 	public  void setUp() throws Exception {
 		// TODO Auto-generated method stub
 		super.setUp();
 		this.activity=this.getActivity();
-		this.solo=new Solo(getInstrumentation(),getActivity());
+		this.solo=new Solo(getInstrumentation(),getActivity());//启动被测应用
 	}
 	@Override
 	protected void tearDown() throws Exception {
