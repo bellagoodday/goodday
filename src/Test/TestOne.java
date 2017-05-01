@@ -14,7 +14,7 @@ public class TestOne extends ActivityInstrumentationTestCase2{
 	private static String packageName="com.shishike.calm";
 	private static String mainActivity="com.shishike.calm.autoset.StartActivity_";
 	private Solo solo;
-	public Activity activity;//activity
+	public Activity activity;
 	
 	private  static Class<?> launchActivityClass;
 	
